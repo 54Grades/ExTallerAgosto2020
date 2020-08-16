@@ -1,6 +1,6 @@
 ---
-- hosts: centos
-  remote_user: Ansible
+- hosts: chicken
+  remote_user: ansible
   become: yes
   become_method: sudo
   vars:
@@ -9,12 +9,12 @@
       - php
       - mariadb-server
       - mariadb
-    sitio: ejemplo
-    server: www.ejemplo.com.uy
-    hostmaster: admin@ejemplo.com.uy
+    sitio: chicken
+    server: www.chicken.com.uy
+    hostmaster: admin@chicken.com.uy
 
   tasks:
-  - name: Install LAMP software
+  - name: Install Obligatorio software
     yum:
       name: "{{ packages }}"
       state: latest
@@ -28,8 +28,8 @@
 
   - name: Add virtualhost config directory to hhtpd.conf
     lineinfile:
-      path: /etc/httpd/conf/httpd.conf
-      line: IncludeOptional vhost.d/*.conf
+        path: /etc/httpd/conf/httpd.conf
+        line: IncludeOptional vhost.d/*.conf
 
   - name: Create virtualhost content directories
     file:
@@ -76,4 +76,4 @@
     service:
       name: httpd
       state: restarted
-      enabled: yes 
+      enabled: yes

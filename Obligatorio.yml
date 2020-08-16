@@ -1,11 +1,11 @@
 ---
-- hosts: webserver
+- hosts: chicken
   remote_user: ansible
   become: yes
   become_method: sudo
 
   vars_files:
-  - ./loadbalancer_vars.yml
+  - ./templates/loadbalancer_vars.yml
 
   roles:
   - role: apache-centos
